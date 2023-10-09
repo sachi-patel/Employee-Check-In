@@ -14,6 +14,18 @@ app_license = "MIT"
 # app_include_css = "/assets/empcheck/css/empcheck.css"
 # app_include_js = "/assets/empcheck/js/empcheck.js"
 
+fixtures = fixtures = [
+		{"dt":"Custom Field", "filters": [["name", "in",(
+            "Employee-latitude",
+            "Employee-longitude",
+            "Employee-coordinates",
+            "Employee Checkin-coordinates",
+            "Employee Checkin-latitude",
+            "Employee Checkin-longitude",
+            "Employee Checkin-map",
+            "Employee Checkin-location_status"
+        )]]}
+]
 # include js, css files in header of web template
 # web_include_css = "/assets/empcheck/css/empcheck.css"
 # web_include_js = "/assets/empcheck/js/empcheck.js"
@@ -29,7 +41,7 @@ app_license = "MIT"
 # page_js = {"page" : "public/js/file.js"}
 
 # include js in doctype views
-# doctype_js = {"doctype" : "public/js/doctype.js"}
+doctype_js = {"Employee Checkin" : "public/js/emp.js"}
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
@@ -102,13 +114,12 @@ app_license = "MIT"
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-#	"*": {
-#		"on_update": "method",
-#		"on_cancel": "method",
-#		"on_trash": "method"
-#	}
-# }
+doc_events = {
+	
+"Employee Checkin":{
+    "validate": "empcheck.empcheck.emp.custom_validate"
+}
+}
 
 # Scheduled Tasks
 # ---------------
